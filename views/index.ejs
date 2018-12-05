@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mongo board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+   
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The Dojo Message Board</h1>
+        </div>
+        <div class="post_section">
+            <div class="title">
+                <h1>New Post</h1>
+            </div>
+                <form action="/" method="post">
+                    <div class="name_row">
+                        <label for="name">Name : </label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="post_row">
+                        <label for="post">Message : </label>
+                        <input type="text" name="post" id="post">
+                    </div>
+                    <div class="submit_row">
+                        <input type="submit" value="Post message">
+                    </div>
+                </form>
+        </div>
+        <div class="wall_section">
+            <div class="title">
+                <h1>Comment Section</h1>
+            </div>
+            <% for (var post of posts) { %>
+                <div class="comment">
+                    <h2>Name :  <%= post.name %></h2>
+                    <h2>Message : <%= post.post %></h2>
+                    <% if (post.comments.length > 0) { %>
+                </div>
+                <div class="replys">
+                    <% for (var comment of post.comments) { %>
+                        <div class="space">
+                            <h4>Name : <%= comment.name %></h4>
+                            <h4>Comment : <%= comment.comment %></h4>
+                        </div>
+                    <% } %>
+                    <% } %>
+                </div>
+            <div id="comment_footer">
+                <form action="/posts/<%= post._id %>" method="post">
+                    <div class="name_row">
+                        <label for="name">Name : </label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="comment_row">
+                        <label for="comment">Comment : </label>
+                        <input type="text" name="comment" id="comment">
+                    </div>
+                    <div class="submit_row">
+                        <input type="submit" value="Post comment">
+                    </div>
+                </form>
+                <% } %>
+            </div>  
+        </div>
+    </div>
+</body>
+</html>
