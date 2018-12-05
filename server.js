@@ -1,7 +1,7 @@
 // ******************  Configuration  ******************
 var express = require("express");
 var app = express();
-var port = 5000;var bodyParser = require("body-parser");
+var bodyParser = require("body-parser");
 var path = require("path");
 
 app.use(bodyParser.urlencoded({
